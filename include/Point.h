@@ -21,5 +21,6 @@ class Point{
         bool operator<(const Point& other);
         void normalize();
 };
-
+//division avec un int
+//multiplication avec un int
 #endif
