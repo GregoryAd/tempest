@@ -10,17 +10,17 @@ class Point{
         T x, y;
 
     public :
+        Point(T a, T b);
         const T& getX() const;
         const T& getY() const;
         void print() const;
-        Point& operator+(const Point& other);
-        Point& operator-(const Point& other);
-        Point& operator*(const Point& other);
-        Point& operator==(const Point& other);
+        Point<T>& operator+(const Point& other);
+        Point<T>& operator-(const Point& other);
+        Point<T>& operator*(const T a);
+        Point<T>& operator/(const T a);
+        bool operator==(const Point& other);
         bool operator>(const Point& other);
         bool operator<(const Point& other);
         void normalize();
 };
-//division avec un int
-//multiplication avec un int
 #endif
