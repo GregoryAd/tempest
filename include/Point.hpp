@@ -14,12 +14,12 @@ const T& Point<T>::getY() const{
 // affichage
 template <typename T>
 void Point<T>::print() const{
-    std::cout << "x = " << this.x << ",y = " << this.y << std::endl;
+    std::cout << "x = " this.x ",y = " this.y << std::endl;
 }
 
 // opérateurs
 template <typename T>
-Point<T>& Point<T>::operator+(const Point& other){
+Point<T> Point<T>::operator+(const Point& other){
     Point res;
     res.x = this->x + other.x;
     res.y = this->y + other.y;
@@ -27,7 +27,7 @@ Point<T>& Point<T>::operator+(const Point& other){
 }
 
 template <typename T>
-Point<T>& Point<T>::operator-(const Point& other){
+Point<T> Point<T>::operator-(const Point& other){
     Point res;
     res.x = this->x - other.x;
     res.y = this->y - other.y;
@@ -35,7 +35,7 @@ Point<T>& Point<T>::operator-(const Point& other){
 }
 
 template <typename T>
-Point<T>& Point<T>::operator*(const T a){
+Point<T> Point<T>::operator*(const T a){
     Point res;
     res.x = (this->x)*a;
     res.y = (this->y)*a;
@@ -43,7 +43,7 @@ Point<T>& Point<T>::operator*(const T a){
 }
 
 template <typename T>
-Point<T>& Point<T>::operator/(const T a){
+Point<T> Point<T>::operator/(const T a){
     Point res;
     res.x = (this->x)/a;
     res.y = (this->y)/a;
@@ -68,7 +68,7 @@ bool Point<T>::operator>(const Point& other){
 
 template <typename T>
 bool Point<T>::operator<(const Point& other){
-    if (!(this>other||this==other))
+    if !((this>other)||(this==other))
         return true;
     else
         return false;

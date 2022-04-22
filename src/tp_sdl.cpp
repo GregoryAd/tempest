@@ -45,11 +45,16 @@ int main(int argc, char** argv)
 	SDL_Window* window = SDL_CreateWindow("Test_SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+
 	assert(renderer != NULL);
+
+	Line::initRenderer(renderer);
 
 	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
 	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
-	//Line l{ std::move(p1), std::move(p2)};
+	Line l{ std::move(p1), std::move(p2)};
+
+
 
 	bool quit = false;
 	while (!quit)
@@ -64,8 +69,7 @@ int main(int argc, char** argv)
 				break;
 			}
 		}
-		
-		draw(renderer);
+		l.draw();
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
