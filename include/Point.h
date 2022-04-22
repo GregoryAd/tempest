@@ -10,7 +10,9 @@ class Point{
         T x, y;
 
     public :
-        Point(T a, T b);
+        Point(T a, T b) :x{a}, y{b} {
+
+        };
         const T& getX() const;
         const T& getY() const;
         void print() const;
@@ -23,4 +25,7 @@ class Point{
         bool operator<(const Point& other);
         void normalize();
 };
+
+#include "Point.hpp"
+
 #endif

@@ -1,27 +1,20 @@
-#include "../include/Point.h"
-
-template <typename T>
-// constructeur
-Point<T>::Point(T a, T b){
-    Point.x = a;
-    Point.y = b;
-}
+#include "Point.h"
 
 // getters
 template <typename T>
 const T& Point<T>::getX() const{
-    return(this->x);
+    return this->x;
 }
 
 template <typename T>
 const T& Point<T>::getY() const{
-    return(this->y);
+    return this->y;
 }
 
 // affichage
 template <typename T>
 void Point<T>::print() const{
-    cout << "x = " this.x ",y = " this.y << endl;
+    std::cout << "x = " this.x ",y = " this.y << std::endl;
 }
 
 // opérateurs
@@ -59,31 +52,31 @@ Point<T>& Point<T>::operator/(const T a){
 
 template <typename T>
 bool Point<T>::operator==(const Point& other){
-    if (this->x==other->x)&&(this->y==other->y)
-        return TRUE;
+    if ((this->x==other->x)&&(this->y==other->y))
+        return true;
     else
-        return FALSE;
+        return false;
 }
 
 template <typename T>
 bool Point<T>::operator>(const Point& other){
-    if (this->x>other->x)&&(this->y>other->y)
-        return TRUE;
+    if ((this->x>other->x)&&(this->y>other->y))
+        return true;
     else
-        return FALSE;
+        return false;
 }
 
 template <typename T>
 bool Point<T>::operator<(const Point& other){
-    if !((this>other)||(this==other)
-        return TRUE;
+    if !((this>other)||(this==other))
+        return true;
     else
-        return FALSE;
+        return false;
 }
 
 template <typename T>
 void Point<T>::normalize(){
-    float n = sqrt(pow(this->x,2)+pow(this->y,2)
+    float n = sqrt(pow(this->x, 2) + pow(this->y, 2));
     x = x/n;
     y = y/n;
 }

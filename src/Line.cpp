@@ -1,4 +1,3 @@
-#include "..\include\Line.h"
 #include "Line.h"
 
 const std::unique_ptr <Point<int>> Line::center() const {
@@ -21,7 +20,8 @@ const Point<int>* Line::getY() const {
 void Line::initRenderer(SDL_Renderer renderer) {
 	this->renderer = renderer;
 }
-void Line::draw() const{
+
+void Line::draw() const override{
 	SDL_RenderDrawLine(this->renderer, this->getX()->getX, this->getX()->getY, 
 		this->getY()->getX, this->getY()->getY);
 }

@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <iostream>
 
-#include "Shape.h"
+#include "Line.h"
 
 Uint8 color[4] = {255,255,0,255};
 int last_x;
@@ -17,7 +17,7 @@ void draw(SDL_Renderer* renderer)
 		SDL_RenderClear(renderer);
 	}
 	int x,y;
-	if ( SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT) ) 
+	if (SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT)) 
 	{
 		const Uint8* state = SDL_GetKeyboardState(NULL);
 		SDL_SetRenderDrawColor(renderer, color[0], color[1], color[2], color[3]);
@@ -47,8 +47,9 @@ int main(int argc, char** argv)
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer != NULL);
 
-
-
+	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
+	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
+	Line l{ std::move(p1), std::move(p2)};
 
 	bool quit = false;
 	while (!quit)
@@ -63,7 +64,7 @@ int main(int argc, char** argv)
 				break;
 			}
 		}
-
+		
 		draw(renderer);
 		SDL_RenderPresent(renderer);
 	}
