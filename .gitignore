@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+CMakeSettings.json
 
 # Compiled Object files
 *.slo
@@ -33,3 +34,5 @@
 
 #folder
 .vs/
+SDL/*
+out/*
