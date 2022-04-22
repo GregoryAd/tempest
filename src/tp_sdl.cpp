@@ -49,7 +49,7 @@ int main(int argc, char** argv)
 
 	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
 	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
-	Line l{ std::move(p1), std::move(p2)};
+	//Line l{ std::move(p1), std::move(p2)};
 
 	bool quit = false;
 	while (!quit)

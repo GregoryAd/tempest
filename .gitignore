@@ -34,5 +34,4 @@ CMakeSettings.json
 
 #folder
 .vs/
-SDL/*
 out/*
