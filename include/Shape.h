@@ -7,7 +7,7 @@
 
 class Shape : public Drawable {
 private:
-    std::vector<Line> shape;
+    std::shared_ptr<std::vector<Line>> shape;
 public:
     void draw() const override;
 };

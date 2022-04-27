@@ -5,11 +5,15 @@
 #include <SDL.h>
 #include <vector>
 
-#include "Drawable.h"
-#include "Line.h"
+#include "Shape.h"
 
-class Map: public Drawable{
+class Map: public Shape{
+	public:
+		Map():Shape(){
 
+		};
+		void draw() const override;
+		int& const move(int& const input);
 };
 
 #endif

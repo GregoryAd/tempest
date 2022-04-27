@@ -1,27 +1,28 @@
 #include "Line.h"
 
+SDL_Renderer* Line::renderer = nullptr;
+
 const std::unique_ptr <Point<int>> Line::center() const {
-	auto ptr = std::unique_ptr<Point<int>>{ (this->x + this->y) / 2 };
+	auto ptr = std::make_unique<Point<int>>(*(this->x.get()) + *(this->y.get()) / 2);
 	return ptr;
 }
 const std::unique_ptr <Point<int>> Line::lineToVector() const {
-	auto ptr = std::unique_ptr<Point<int>>{ this->x - this->y};
-	return ptr;
+	return std::make_unique<Point<int>>(*(this->x.get()) - *(this->y.get()));
 }
 
 const Point<int>* Line::getX() const {
 	return this->x.get();
 }
 const Point<int>* Line::getY() const {
-	this->y.get();
+	return this->y.get();
 }
 
 
-void Line::initRenderer(SDL_Renderer renderer) {
-	this->renderer = renderer;
+void Line::initRenderer(SDL_Renderer *renderer) {
+	Line::renderer = renderer;
 }
 
-void Line::draw() const override{
-	SDL_RenderDrawLine(this->renderer, this->getX()->getX, this->getX()->getY, 
-		this->getY()->getX, this->getY()->getY);
+void Line::draw() const {
+	SDL_RenderDrawLine(this->renderer, this->getX()->getX(), this->getX()->getY(),
+		this->getY()->getX(), this->getY()->getY());
 }

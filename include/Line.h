@@ -11,7 +11,7 @@ class Line : public Drawable {
 private:
 	std::unique_ptr<Point<int>> x;
 	std::unique_ptr<Point<int>> y;
-	static std::shared_ptr<SDL_Renderer> renderer;
+	static SDL_Renderer *renderer;
 public:
 
 	Line(std::unique_ptr<Point<int>> x, std::unique_ptr<Point<int>> y) : x{ std::move(x) }, y{ std::move(y) } {
@@ -22,7 +22,7 @@ public:
 	const Point<int>* getX() const;
 	const Point<int>* getY() const;
 
-	void initRenderer(SDL_Renderer renderer);
+	static void initRenderer(SDL_Renderer *renderer);
 	void draw() const override;
 };
 
