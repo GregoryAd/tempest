@@ -5,15 +5,34 @@
 #include <SDL.h>
 #include <vector>
 
-#include "Shape.h"
+#include "Line.h"
+#include "Color.h"
 
-class Map: public Shape{
+class Map {
+	private:
+		bool loop;
+		std::unique_ptr<std::vector<Line>> shape;
+		std::unique_ptr<std::vector<Line>> shapeInside;
+		std::shared_ptr<Color> color;
+
+
 	public:
-		Map():Shape(){
-
+		Map(bool loop, std::unique_ptr<std::vector<Line>> shape, std::unique_ptr<std::vector<Line>> shapeInside, std::shared_ptr<Color> color)
+			: loop{ loop }, shape{ std::move(shape) }, shapeInside{ std::move(shapeInside) }, color{color}{
+			
 		};
-		void draw() const override;
-		int& const move(int& const input);
+
+		Map(const Map& m)
+			: loop{ m.loop }, shape{ new std::vector<Line>{ *m.shape } }, shapeInside{ new std::vector<Line>{*m.shapeInside} }, color{ m.color }
+		{
+
+		}
+
+		void draw() const;
+
+		const Line& getLine(const int i) const;
+
+		int move(const int& position, const int& input) const;
 };
 
 #endif

@@ -2,7 +2,8 @@
 #include <assert.h>
 #include <iostream>
 
-#include "Line.h"
+#include "Game.h"
+
 
 Uint8 color[4] = {255,255,0,255};
 int last_x;
@@ -42,37 +43,17 @@ int main(int argc, char** argv)
 		return 0;
 	}
 
-	SDL_Window* window = SDL_CreateWindow("Test_SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600,
+	int xSize = 1000;
+	int ySize = 750;
+
+	SDL_Window* window = SDL_CreateWindow("Test_SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, xSize, ySize,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI);
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	assert(renderer != NULL);
 
-	Line::initRenderer(renderer);
-
-	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
-	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
-	Line l{ std::move(p1), std::move(p2)};
-
-
-
-	bool quit = false;
-	while (!quit)
-	{
-		SDL_Event event;
-		while (!quit && SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_QUIT:
-				quit = true;
-				break;
-			}
-		}
-		l.draw();
-		SDL_RenderPresent(renderer);
-	}
-	SDL_Quit();
+	Game g{};
+	g.start(renderer, xSize, ySize);
 
 	return 0;
 }

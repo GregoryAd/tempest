@@ -16,6 +16,9 @@ class Point{
         Point() :x{0}, y{0}{
 
         };
+        Point(const Point<T> &p) :x{ p.x}, y{ p.y }{
+
+        };
         const T& getX() const;
         const T& getY() const;
         void print() const;
