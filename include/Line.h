@@ -7,7 +7,7 @@
 #include "Drawable.h"
 #include "SDL.h"
 
-class Line : public Drawable {
+class Line {
 private:
 	std::unique_ptr<Point<int>> x;
 	std::unique_ptr<Point<int>> y;
@@ -23,7 +23,7 @@ public:
 	const Point<int>* getY() const;
 
 	static void initRenderer(SDL_Renderer *renderer);
-	void draw() const override;
+	void draw() const;
 };
 
 
