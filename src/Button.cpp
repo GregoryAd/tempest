@@ -71,11 +71,7 @@ void Button::handleEvent(SDL_Event* e){
 // affichage du bouton
 void Button::render(){
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-    SDL_SetRenderTarget(renderer, texture);
-    SDL_RenderFillRect(renderer, NULL);
-    SDL_SetRenderTarget(renderer, NULL);
-
-    SDL_RenderCopy(renderer, texture, NULL, &box);
+    SDL_RenderFillRect(renderer, &box);
 }
 
 // destruction du bouton
