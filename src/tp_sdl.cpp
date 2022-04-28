@@ -2,8 +2,13 @@
 #include <assert.h>
 #include <iostream>
 
+<<<<<<< HEAD
 #include "Game.h"
 
+=======
+#include "Line.h"
+#include "Button.h"
+>>>>>>> b5f6526583c5470403d73473e25d7acf3fd9d55b
 
 Uint8 color[4] = {255,255,0,255};
 int last_x;
@@ -52,8 +57,59 @@ int main(int argc, char** argv)
 
 	assert(renderer != NULL);
 
+<<<<<<< HEAD
 	Game g{};
 	g.start(renderer, xSize, ySize);
+=======
+	Line::initRenderer(renderer);
+
+	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
+	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
+	Line l{ std::move(p1), std::move(p2)};
+
+
+	// Boutons
+	Button b1 = Button(100, 100, 200, 100, renderer);
+	Button b2 = Button(100, 300, 200, 100, renderer);
+
+
+	bool quit = false;
+	while (!quit)
+	{
+		SDL_Event event;
+		while (!quit && SDL_PollEvent(&event))
+		{
+
+			// nettoyer écran
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			SDL_RenderClear(renderer);
+
+			// Affichage boutons
+			b1.render();
+			b2.render();
+
+			switch (event.type)
+			{
+			case SDL_QUIT:
+				quit = true;
+				break;
+			default:
+				b1.handleEvent(&event);
+				b2.handleEvent(&event);
+				if (b1.CurrentSprite == 2) {
+					std::cout << "Clic sur bouton 1" << std::endl;
+				}
+				if (b2.CurrentSprite == 2) {
+					std::cout << "Clic sur bouton 2" << std::endl;
+				}
+
+			}
+		}
+		l.draw();
+		SDL_RenderPresent(renderer);
+	}
+	SDL_Quit();
+>>>>>>> b5f6526583c5470403d73473e25d7acf3fd9d55b
 
 	return 0;
 }
