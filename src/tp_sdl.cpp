@@ -2,13 +2,9 @@
 #include <assert.h>
 #include <iostream>
 
-<<<<<<< HEAD
-#include "Game.h"
-
-=======
 #include "Line.h"
 #include "Button.h"
->>>>>>> b5f6526583c5470403d73473e25d7acf3fd9d55b
+
 
 Uint8 color[4] = {255,255,0,255};
 int last_x;
@@ -57,16 +53,6 @@ int main(int argc, char** argv)
 
 	assert(renderer != NULL);
 
-<<<<<<< HEAD
-	Game g{};
-	g.start(renderer, xSize, ySize);
-=======
-	Line::initRenderer(renderer);
-
-	std::unique_ptr<Point<int>> p1{ new Point<int>{300, 400} };
-	std::unique_ptr<Point<int>> p2{ new Point<int>{300, 500} };
-	Line l{ std::move(p1), std::move(p2)};
-
 
 	// Boutons
 	Button b1 = Button(100, 100, 200, 100, renderer);
@@ -105,11 +91,9 @@ int main(int argc, char** argv)
 
 			}
 		}
-		l.draw();
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
->>>>>>> b5f6526583c5470403d73473e25d7acf3fd9d55b
 
 	return 0;
 }
