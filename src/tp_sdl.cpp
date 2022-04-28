@@ -67,6 +67,7 @@ int main(int argc, char** argv)
 	// Texte
 	Color red = Color(255, 0, 0, 255);
 	Color blue = Color(0, 0, 255, 255);
+	Color yellow = Color(255, 255, 0, 255);
 	Color black = Color(0, 0, 0, 255);
 	Text t1 = Text(renderer, "~TEMPEST~", 220, 140, 3, blue);
 	Text t2 = Text(renderer, "~TEMPEST~", 230, 150, 3, red);
@@ -95,6 +96,21 @@ int main(int argc, char** argv)
 	text2.push_back(t3);
 	text2.push_back(t4);
 
+	// --- HUD (SCORE) ---
+	// Boutons (aucun)
+	std::vector<Button> emptyButtons;
+
+	// Texte
+	t1 = Text(renderer, "0", 100, 40, 1, yellow);
+	int currentScore = 0; // init du score du joueur
+	std::vector<Text> text3;
+	text3.push_back(t1);
+
+	// Scene
+	Scene hud(3, buttons, f, text3);
+
+
+
 	// Scene
 	Scene gameover(2, buttons, f, text2);
 
@@ -122,7 +138,7 @@ int main(int argc, char** argv)
 				if (b1.CurrentSprite == 2) {
 					start.transition(renderer);
 					Game g{};
-					g.start(renderer, xSize, ySize);
+					g.start(renderer, xSize, ySize, hud);
 				}
 				if (b2.CurrentSprite == 2) {
 					start.transition(renderer);

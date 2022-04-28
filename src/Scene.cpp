@@ -39,3 +39,22 @@ void Scene::transition(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 }
+
+// getter pour le texte
+std::vector<Text> Scene::getStrings() {
+	return strings;
+}
+
+// update pour le score
+void Scene::update(SDL_Renderer* renderer,std::string str, Text& string) {
+	SDL_SetRenderDrawColor(renderer,
+		(string.getColor()).getR(),
+		(string.getColor()).getG(),
+		(string.getColor()).getB(),
+		(string.getColor()).getAlpha());
+	font.draw(string.getRenderer(),
+		str,
+		string.getx(),
+		string.gety(),
+		string.getSize());
+}
