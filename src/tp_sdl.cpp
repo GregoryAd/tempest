@@ -6,36 +6,6 @@
 #include "Scene.h"
 #include "Game.h"
 
-Uint8 color[4] = {255,255,0,255};
-int last_x;
-int last_y;
-
-void draw(SDL_Renderer* renderer)
-{
-	const Uint8* state = SDL_GetKeyboardState(NULL);
-	if (state[SDL_SCANCODE_SPACE])
-	{
-		SDL_SetRenderDrawColor(renderer, 0,0,0,255);
-		SDL_RenderClear(renderer);
-	}
-	int x,y;
-	if (SDL_GetMouseState(&x,&y) & SDL_BUTTON(SDL_BUTTON_LEFT)) 
-	{
-		const Uint8* state = SDL_GetKeyboardState(NULL);
-		SDL_SetRenderDrawColor(renderer, color[0], color[1], color[2], color[3]);
-		if (state[SDL_SCANCODE_RSHIFT])
-		{
-			SDL_RenderDrawLine(renderer, last_x,last_y,x,y);
-		}
-		else
-		{
-			SDL_RenderDrawPoint(renderer, x, y);
-		}
-		last_x = x;
-		last_y = y;
-	}
-}
-
 int main(int argc, char** argv)
 {
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
@@ -134,11 +104,13 @@ int main(int argc, char** argv)
 				b1.handleEvent(&event);
 				b2.handleEvent(&event);
 				if (b1.CurrentSprite == 2) {
+					b1.CurrentSprite = BUTTON_SPRITE_MOUSE_OUT;
 					start.transition(renderer);
 					Game g{};
 					g.start(renderer, xSize, ySize, hud, gameover);
 				}
 				if (b2.CurrentSprite == 2) {
+					b1.CurrentSprite = BUTTON_SPRITE_MOUSE_OUT;
 					start.transition(renderer);
 					SDL_Quit();
 				}

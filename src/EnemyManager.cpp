@@ -13,6 +13,8 @@ void EnemyManager::update(const Map& m, Player& p) {
 			enemies[i]->draw(m);
 		}
 
+		killEnemy(p.getMunition());
+
 		// si l'ennemi est mort, le retirer de la liste
 		if (enemies[i]->getStatus() == false) {
 			p.addScore(enemies[i]->getReward());
@@ -48,10 +50,34 @@ void EnemyManager::init(const Map& m){
 	if (count == rate) {
 		count = 0;
 		if ((dis(gen) < probability)) {
-			Enemy e{ -5, std::make_shared<std::vector<Line>>(shape2), dis2(gen2), 100, 0.90, 100 };
+			Enemy e{ -2.5, std::make_shared<std::vector<Line>>(shape2), dis2(gen2), 100, 0.90, 100, 15};
 			e.setStatus(true);
 			enemies.push_back(std::make_unique<Enemy>(e));
 		}
 	}
 	
+}
+
+
+
+
+void EnemyManager::killEnemy(std::vector<std::shared_ptr<Munition>> munitions) {
+
+	for (int j = 0; j < munitions.size(); j++) {
+
+		float tpos = 0;
+		int index = -1;
+		for (int i = 0; i < enemies.size(); i++) {
+			if (enemies[i]->getPosition() == munitions[j]->getPosition() && enemies[i]->getTunnel_position() <= munitions[j]->getTunnel_position()
+				&& tpos < enemies[i]->getTunnel_position()) {
+				index = i;
+				tpos = enemies[i]->getTunnel_position();
+			}
+		}
+		if (index != -1) {
+			munitions[j]->setStatus(false);
+			enemies[index]->setStatus(false);
+		}
+			
+	}
 }

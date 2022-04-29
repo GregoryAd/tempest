@@ -14,6 +14,7 @@ public :
 	 {};
 	void init(const Map& m);
 	void update(const Map& m, Player& p);
+	void killEnemy(std::vector<std::shared_ptr<Munition>> munitions);
 };
 
 #endif

@@ -1,5 +1,14 @@
 #include "Entity.h"
 
+bool Entity::getStatus() {
+	return status;
+}
+
+// setter
+void Entity::setStatus(bool s) {
+	status = s;
+}
+
 const float& Entity::getSpeed() const {
 	return speed;
 }
@@ -40,11 +49,10 @@ void Entity::draw(const Map& m) const {
 	int mid = size / 2;
 
 	Point<double> fdir = *lineOut.lineToVector()->normalize();
+
 	Point<int> test = *lineOut.center() + *doubleToInt(fdir * 40);
 	if (dist(test, *lineIn.center()) > dist(*lineOut.center(), *lineIn.center()))
 		fdir = Point<double>{ -fdir.getX(), -fdir.getY() };
-
-	Point<double> fnorm{ fdir.getY(), fdir.getX() };
 
 	SDL_SetRenderDrawColor(Line::getRenderer(), 255, 0, 0, 255);
 

@@ -6,19 +6,18 @@
 
 class Enemy : public Entity {
 private:
-	bool status; // actif ou non (vivant et sur la map)
 	int reward; // score obtenu lorsqu'il est tué
 	bool border;
+	int rate;
+	int count;
 public:
-	Enemy(float speed, std::shared_ptr<std::vector<Line>> shape, int position, float tunnel_position, double pourcentage_size, int reward) :
-		Entity{ speed, shape, position, tunnel_position, pourcentage_size }, status{ 0 }, reward{ reward }, border{false}
+	Enemy(float speed, std::shared_ptr<std::vector<Line>> shape, int position, float tunnel_position, double pourcentage_size, int reward, int rate) :
+		Entity{false, speed, shape, position, tunnel_position, pourcentage_size}, reward{ reward }, border{false}, rate{rate}, count{0}
 	{}
 
 	const int& die();
 	void killPlayer(Player p, SDL_Renderer* renderer);
 	int getReward();
-	bool getStatus();
-	void setStatus(bool s);
 	void move(const Map& m, Player& p);
 	void trackPlayer(const Map& m, Player& p);
 };

@@ -1,5 +1,6 @@
 #include "Player.h"
 
+
 // obtenir la position actuelle du joueur
 const int& Player::getPosition() const {
 	return position;
@@ -35,8 +36,8 @@ void Player::shoot() {
 	Line{ 50, 100, 100, 50 },
 	Line{ 100, 50, 50, 0 },
 	};
-	Munition m { 5, std::make_shared<std::vector<Line>>(shape), position, 0, 0.30 };
-	munitions.push_back(std::make_unique<Munition>(m));
+	Munition m {true, 5, std::make_shared<std::vector<Line>>(shape), position, 0, 0.30 };
+	munitions.push_back(std::make_shared<Munition>(m));
 }
 
 // avance l'état des munitions en jeu du joueur
@@ -45,14 +46,17 @@ bool Player::update(const Map &m) {
 
 	this->draw(m);
 	for (int i = 0; i < munitions.size(); i++) {
+
+		// si on arrive au centre de la map ou que la munition est détruite
+		if (munitions[i]->getTunnel_position() > 100.0 || munitions[i]->getStatus() == false) {
+			munitions.erase(munitions.begin()+i);
+			return status;
+		}
 		// faire avancer les munitions
+
 		munitions[i]->move();
 		munitions[i]->draw(m);
 
-		// si on arrive au centre de la map
-		if (munitions[i]->getTunnel_position() > 100.0) {
-			munitions.erase(munitions.begin()+i);
-		}
 	}
 
 	return status;

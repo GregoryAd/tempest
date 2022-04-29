@@ -94,7 +94,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 	//e.setStatus(true);
 	bool quit = false;
 	bool status = true;
-	while (status)
+	while (!quit && status)
 	{
 		quit = pc.checkInput(&p, m);
 
@@ -112,16 +112,9 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(1000 / 30);
-
-		//mun.draw(m);
-		//e.draw(m);
-		//e.move(m, p);
-
-
-		// faire un if collision
-		// remplacer "100" par ennemi.mourir()
-		//p.addScore(100);
 	}
+	if (quit)
+		SDL_Quit();;
 	gameover.transition(renderer);
 	gameover.render(renderer);
 }
