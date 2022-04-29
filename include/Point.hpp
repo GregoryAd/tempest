@@ -1,5 +1,7 @@
 
 #include <cmath>
+#include <memory>
+
 #include "Point.h"
 
 // getters
@@ -16,7 +18,7 @@ const T& Point<T>::getY() const{
 // affichage
 template <typename T>
 void Point<T>::print() const{
-    std::cout << "x = " this.x ",y = " this.y << std::endl;
+    std::cout << "x = " << this.x << ",y = " << this.y << std::endl;
 }
 
 // opérateurs
@@ -70,7 +72,7 @@ bool Point<T>::operator>(const Point& other){
 
 template <typename T>
 bool Point<T>::operator<(const Point& other){
-    if !((this>other)||(this==other))
+    if(!(this>other||(this==other)))
         return true;
     else
         return false;

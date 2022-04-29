@@ -44,7 +44,7 @@ const Point<int>& Line::getY() const {
 	return *this->y.get();
 }
 
-const int& Line::getSize() const {
+int Line::getSize() const {
 	return dist(*x, *y);
 }
 

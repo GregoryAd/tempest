@@ -30,7 +30,7 @@ public:
 	std::unique_ptr <Point<double>> normal() const;
 	const Point<int>& getX() const;
 	const Point<int>& getY() const;
-	const int& getSize() const;
+	int getSize() const;
 
 
 	static void initRenderer(SDL_Renderer *renderer, std::unique_ptr<Point<int>> windowCenter);

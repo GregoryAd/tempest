@@ -1,17 +1,17 @@
 # tempest
 
-Téléchargement et initialisation du projet
+Tï¿½lï¿½chargement et initialisation du projet
 ```
-git clone --recurse-submodule git@github.com:GregoryAd/tempest.git
+git clone --recurse-submodule https://github.com/GregoryAd/tempest.git
 mkdir BuildSDLEx
 cd BuildSDLEx
 cmake ../tempest
 make -j 8
 ```
 
-## Contrôle du jeu
+## Contrï¿½le du jeu
 
-D -> aller à droite
-Q -> aller à gauche
+D -> aller ï¿½ droite
+Q -> aller ï¿½ gauche
 F -> activer la bombe
 Espace -> tirer

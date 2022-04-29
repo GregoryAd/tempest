@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include <Color.h>
 
-// classe intermédiaire (entre Font et Scene)
+// classe intermï¿½diaire (entre Font et Scene)
 class Text {
 public:
 	SDL_Renderer* renderer;

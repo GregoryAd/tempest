@@ -1,12 +1,12 @@
 #include "Font.h"
 
 
-void Font::draw(SDL_Renderer* renderer, std::string str, int x, int y, int s) const{
+void Font::draw(SDL_Renderer* renderer, const std::string& str, int x, int y, const int& s) const{
 
-    for (char& c : str) {
+    for (const char& c : str) {
         int id = int(c) - 32; // valeur ascii
         int edges = simplex[id][0]; // nombre d'aretes
-        int size = s; // taille du caractère
+        int size = s; // taille du caractï¿½re
 
         for (int i = 2; i < 2 * edges; i = i + 2){
             if (simplex[id][i] != -1

@@ -34,7 +34,7 @@ void Scene::render(SDL_Renderer* renderer){
 
 }
 
-// passer d'une scène à la suivante
+// passer d'une scï¿½ne ï¿½ la suivante
 void Scene::transition(SDL_Renderer* renderer) const{
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);

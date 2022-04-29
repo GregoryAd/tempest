@@ -5,7 +5,7 @@ bool Entity::getStatus() const{
 }
 
 // setter
-void Entity::setStatus(bool s) {
+void Entity::setStatus(const bool& s) {
 	status = s;
 }
 
@@ -33,7 +33,7 @@ void Entity::move() {
 	tunnel_position+= choiceSpeed;
 }
 
-//dessin de l'entité
+//dessin de l'entitï¿½
 void Entity::draw(const Map& m) const {
 	
 	//calcul de la direction du mouvement
@@ -48,7 +48,7 @@ void Entity::draw(const Map& m) const {
 
 	Point<double> fmoveDir{ moveDir.getX() * tunnel_position / 100.0, moveDir.getY() * tunnel_position / 100.0 };
 
-	// calcul de la taille de l'entité
+	// calcul de la taille de l'entitï¿½
 	double distFactor = ((100.0 - tunnel_position) / 100.0);
 	int size = lineOut.getSize() * size_pourcentage * distFactor;
 
@@ -57,14 +57,14 @@ void Entity::draw(const Map& m) const {
 	// calcul du vecteur de la ligne pour faire la rotation
 	Point<double> fdir = *lineOut.lineToVector()->normalize();
 
-	// vérification du sens
+	// vï¿½rification du sens
 	Point<int> test = *lineOut.center() + *doubleToInt(fdir * 40);
 	if (dist(test, *lineIn.center()) > dist(*lineOut.center(), *lineIn.center()))
 		fdir = Point<double>{ -fdir.getX(), -fdir.getY() };
 
 	SDL_SetRenderDrawColor(Line::getRenderer(), 255, 0, 0, 255);
 
-	//pour chaque ligne : dessiner dans le repère de la ligne
+	//pour chaque ligne : dessiner dans le repï¿½re de la ligne
 	for (const Line& l : *shape) {
 
 		double xx = (l.getX().getX() / 100.0) * size - mid;
