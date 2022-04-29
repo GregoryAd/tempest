@@ -2,7 +2,7 @@
 #include "PlayerController.h"
 #include "Munition.h"
 
-void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
+void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 
 	int centerX = xSize / 2;
 	int centerY = ySize / 2;
@@ -68,10 +68,16 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 	PlayerController pc{};
 	Munition mun{7};
 
+	// placeholder for score
+	int score = 0;
+
 	bool quit = false;
 	while (!quit)
 	{
 		quit = pc.checkInput(&p, m);
+
+		// test score
+		score++;
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
@@ -79,6 +85,8 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 		m.draw();
 		p.draw(m);
 		mun.draw(m);
+
+		s.update(renderer, std::to_string(score), s.getStrings()[0]);
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(1000 / 30);

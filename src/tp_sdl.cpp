@@ -3,9 +3,8 @@
 #include <iostream>
 
 #include "Line.h"
-#include "Button.h"
+#include "Scene.h"
 #include "Game.h"
-
 
 Uint8 color[4] = {255,255,0,255};
 int last_x;
@@ -53,13 +52,73 @@ int main(int argc, char** argv)
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	assert(renderer != NULL);
-	Game g{};
-	g.start(renderer, xSize, ySize);
-	/*
-	// Boutons
-	Button b1 = Button(100, 100, 200, 100, renderer);
-	Button b2 = Button(100, 300, 200, 100, renderer);
 
+	// --- MENU START ---
+	// Boutons
+	Button b1 = Button(400, 300, 200, 100, renderer);
+	Button b2 = Button(400, 450, 200, 100, renderer);
+
+	std::vector<Button> buttons;
+	buttons.push_back(b1);
+	buttons.push_back(b2);
+
+	Font f;
+
+	// Texte
+	Color red = Color(255, 0, 0, 255);
+	Color blue = Color(0, 0, 255, 255);
+	Color yellow = Color(255, 255, 0, 255);
+	Color black = Color(0, 0, 0, 255);
+	Text t1 = Text(renderer, "~TEMPEST~", 220, 140, 3, blue);
+	Text t2 = Text(renderer, "~TEMPEST~", 230, 150, 3, red);
+	Text t3 = Text(renderer, "Start", 420, 370, 2, black);
+	Text t4 = Text(renderer, "Exit", 435, 520, 2, black);
+
+	std::vector<Text> text;
+	text.push_back(t1);
+	text.push_back(t2);
+	text.push_back(t3);
+	text.push_back(t4);
+
+	// Scene
+	Scene start(1, buttons, f, text);
+
+	// --- MENU GAMEOVER ---
+	// Texte
+	t1 = Text(renderer, "~GAME OVER~", 220, 140, 3, blue);
+	t2 = Text(renderer, "~GAME OVER~", 230, 150, 3, red);
+	t3 = Text(renderer, "Retry", 420, 370, 2, black);
+	t4 = Text(renderer, "Exit", 435, 520, 2, black);
+
+	std::vector<Text> text2;
+	text2.push_back(t1);
+	text2.push_back(t2);
+	text2.push_back(t3);
+	text2.push_back(t4);
+
+	// --- HUD (SCORE) ---
+	// Boutons (aucun)
+	std::vector<Button> emptyButtons;
+
+	// Texte
+	t1 = Text(renderer, "0", 100, 40, 1, yellow);
+	int currentScore = 0; // init du score du joueur
+	std::vector<Text> text3;
+	text3.push_back(t1);
+
+	// Scene
+	Scene hud(3, buttons, f, text3);
+
+
+
+	// Scene
+	Scene gameover(2, buttons, f, text2);
+
+	// nettoyer écran
+	start.transition(renderer);
+
+	// menu de base
+	start.render(renderer);
 
 	bool quit = false;
 	while (!quit)
@@ -67,14 +126,6 @@ int main(int argc, char** argv)
 		SDL_Event event;
 		while (!quit && SDL_PollEvent(&event))
 		{
-
-			// nettoyer écran
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-			SDL_RenderClear(renderer);
-
-			// Affichage boutons
-			b1.render();
-			b2.render();
 
 			switch (event.type)
 			{
@@ -85,10 +136,13 @@ int main(int argc, char** argv)
 				b1.handleEvent(&event);
 				b2.handleEvent(&event);
 				if (b1.CurrentSprite == 2) {
-					std::cout << "Clic sur bouton 1" << std::endl;
+					start.transition(renderer);
+					Game g{};
+					g.start(renderer, xSize, ySize, hud);
 				}
 				if (b2.CurrentSprite == 2) {
-					std::cout << "Clic sur bouton 2" << std::endl;
+					start.transition(renderer);
+					gameover.render(renderer);
 				}
 
 			}
@@ -96,7 +150,7 @@ int main(int argc, char** argv)
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
-	*/
+	
 	return 0;
 }
 

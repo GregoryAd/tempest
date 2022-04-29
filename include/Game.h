@@ -4,6 +4,7 @@
 #include "Map.h"
 #include "Player.h"
 #include "Game.h"
+#include "Scene.h"
 
 class Game
 {
@@ -14,7 +15,7 @@ public:
 	{
 
 	};
-	void start(SDL_Renderer* renderer, int xSize, int ySize);
+	void start(SDL_Renderer* renderer, int xSize, int ySize, Scene s);
 
 };
 #endif
