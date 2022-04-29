@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "PlayerController.h"
 #include "Munition.h"
+#include "Enemy.h"
 
 void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 
@@ -81,6 +82,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 		m.draw();
 		p.draw(m);
 		mun.draw(m);
+
 
 		// faire un if collision
 		// remplacer "100" par ennemi.mourir()
