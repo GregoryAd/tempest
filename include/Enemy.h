@@ -20,8 +20,8 @@ public:
 	int getReward();
 	bool getStatus();
 	void setStatus(bool s);
-	void move() override;
-	void trackPlayer();
+	void move(const Map& m);
+	void trackPlayer(const Map& m);
 };
 
 

@@ -27,11 +27,28 @@ void Enemy::killPlayer(Player p, SDL_Renderer* renderer) {
 		p.die(p.getGameOver(), renderer);
 }
 
-void Enemy::move() {
+void Enemy::move(const Map& m) {
+	if (!status)
+		return;
 	if (!border)
 		Entity::move();
 	else
-
-	if (getTunnel_position() > 100)
+		trackPlayer();
+	if (getTunnel_position() <= 0)
 		border = true;
+}
+
+void Enemy::trackPlayer(const Map& m) {
+	int d1 = std::abs(this->getPosition() - p->getPosition());
+	int d2 = std::abs(this->getPosition() + (std::abs(m.getSize() - p->getPosition());
+	if (d1 > d2) {
+		int pos = m.move(this->getPosition(), - 1);
+		pos = (pos < 0) ? m.move(this->getPosition(), 1) : pos;
+		this->setPosition(pos);
+	}
+	if (d2 > d1) {
+		int pos = m.move(this->getPosition(), 1);
+		pos = (pos < 0) ? m.move(this->getPosition(), -1) : pos;
+		this->setPosition(pos);
+	}
 }

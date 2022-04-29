@@ -6,6 +6,10 @@ const float& Entity::getSpeed() const {
 const int& Entity::getPosition() const {
 	return position;
 }
+
+void Entity::setPosition(const int& pos) {
+	position = pos;
+}
 const float& Entity::getTunnel_position() const {
 	return tunnel_position;
 }

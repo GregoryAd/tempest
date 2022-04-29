@@ -27,6 +27,7 @@ public:
 	virtual void move();
 	const float& getSpeed() const;
 	const int& getPosition() const;
+	void setPosition(const int& pos);
 	const float& getTunnel_position() const;
 
 	void draw(const Map& m) const;

@@ -32,6 +32,7 @@ class Map {
 
 		const Line& getLine(const int i) const;
 		const Line& getInsideLine(const int i) const;
+		inline const int& getSize() const { return shape->size(); }
 
 		int move(const int& position, const int& input) const;
 };
