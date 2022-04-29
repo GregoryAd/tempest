@@ -15,10 +15,11 @@ private:
 	std::shared_ptr<std::vector<Line>> shape;
 	int position;
 	int tunnel_position;
+	double size_pourcentage;
 
 public:
-	Entity(int speed, std::shared_ptr<std::vector<Line>> shape, int position, int tunnel_position) :
-		speed{ speed }, shape{ shape }, position{ position }, tunnel_position{ tunnel_position }
+	Entity(int speed, std::shared_ptr<std::vector<Line>> shape, int position, int tunnel_position, double size_pourcentage) :
+		speed{ speed }, shape{ shape }, position{ position }, tunnel_position{ tunnel_position }, size_pourcentage{size_pourcentage}
 	{
 
 	}
