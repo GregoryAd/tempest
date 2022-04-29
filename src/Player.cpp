@@ -35,7 +35,7 @@ void Player::shoot() {
 	Line{ 50, 100, 100, 50 },
 	Line{ 100, 50, 50, 0 },
 	};
-	Munition m { 1, std::make_shared<std::vector<Line>>(shape), position, 0, 0.10 };
+	Munition m { 5, std::make_shared<std::vector<Line>>(shape), position, 0, 0.30 };
 	munitions.push_back(std::make_unique<Munition>(m));
 }
 
@@ -50,7 +50,7 @@ void Player::update(const Map &m) {
 		munitions[i]->draw(m);
 
 		// si on arrive au centre de la map
-		if (munitions[i]->getTunnel_position() == 100) {
+		if (munitions[i]->getTunnel_position() > 100.0) {
 			munitions.erase(munitions.begin()+i);
 		}
 	}

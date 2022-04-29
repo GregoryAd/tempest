@@ -11,7 +11,8 @@ const float& Entity::getTunnel_position() const {
 }
 
 void Entity::move() {
-	tunnel_position+=speed;
+	double distFactor = ((100.0 - tunnel_position) / 100.0);
+	tunnel_position+=std::max(speed * distFactor, 0.5);
 }
 
 void Entity::draw(const Map& m) const {
@@ -24,12 +25,11 @@ void Entity::draw(const Map& m) const {
 	Line directionLine{ in->getX(), in->getY(), out->getX(), out->getY()};
 	Point<int> moveDir = *directionLine.lineToVector();
 
-	std::cout << "tunnel :" << tunnel_position << std::endl;
 	Point<double> fmoveDir{ moveDir.getX() * tunnel_position / 100.0, moveDir.getY() * tunnel_position / 100.0 };
 
 
-
-	int size = lineOut.getSize() * size_pourcentage;
+	double distFactor = ((100.0 - tunnel_position) / 100.0);
+	int size = lineOut.getSize() * size_pourcentage * distFactor;
 	int mid = size / 2;
 
 	Point<double> fdir = *lineOut.lineToVector()->normalize();
