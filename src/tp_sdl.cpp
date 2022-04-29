@@ -68,16 +68,21 @@ int main(int argc, char** argv)
 
 	// --- HUD (SCORE) ---
 	// Boutons (aucun)
-	std::vector<Button> emptyButtons;
+	std::vector<Button> emptyButtons{};
 
 	// Texte
 	t1 = Text(renderer, "0", 100, 40, 1, yellow);
-	int currentScore = 0; // init du score du joueur
+
+	t2 = Text(renderer, "Bombe: ", 600, 40, 1, yellow);
+	t3 = Text(renderer, "0", 720, 40, 1, yellow);
+
 	std::vector<Text> text3;
 	text3.push_back(t1);
+	text3.push_back(t2);
+	text3.push_back(t3);
 
 	// Scene
-	Scene hud(3, buttons, f, text3);
+	Scene hud(3, emptyButtons, f, text3);
 
 	// Scene
 	Scene gameover(2, buttons, f, text2);
@@ -120,42 +125,6 @@ int main(int argc, char** argv)
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
-	
-	return 0;
-}
-
-/*int main(int argc, char** argv)
-{
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
-	{
-		std::cerr<<"Pb init SDL"<< std::endl;
-		return 0;
-	}
-
-	SDL_Window* window = SDL_CreateWindow("Test_SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600,
-						  SDL_WINDOW_SHOWN|SDL_WINDOW_ALLOW_HIGHDPI);
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
-	assert (renderer != NULL);
-
-	bool quit = false;
-	while (!quit)
-	{
-		SDL_Event event;
-		while (!quit && SDL_PollEvent(&event))
-		{
-			switch (event.type)
-			{
-			case SDL_QUIT:
-				quit = true;
-				break;
-			}
-		}
-
-		draw(renderer);
-		SDL_RenderPresent(renderer);
-	}
-	SDL_Quit();
 
 	return 0;
 }
-*/

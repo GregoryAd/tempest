@@ -46,15 +46,7 @@ std::vector<Text> Scene::getStrings() {
 }
 
 // update pour le score
-void Scene::update(SDL_Renderer* renderer,std::string str, Text& string) {
-	SDL_SetRenderDrawColor(renderer,
-		(string.getColor()).getR(),
-		(string.getColor()).getG(),
-		(string.getColor()).getB(),
-		(string.getColor()).getAlpha());
-	font.draw(string.getRenderer(),
-		str,
-		string.getx(),
-		string.gety(),
-		string.getSize());
+void Scene::update(SDL_Renderer* renderer,std::string str, int pos) {
+
+	strings[pos].str = str;
 }

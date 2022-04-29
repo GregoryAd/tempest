@@ -19,7 +19,7 @@ public:
 	std::vector<Text> getStrings();
 	void render(SDL_Renderer* renderer);
 	void transition(SDL_Renderer* renderer);
-	void update(SDL_Renderer* renderer, std::string str, Text& string);
+	void update(SDL_Renderer* renderer, std::string str, int pos);
 };
 
 
