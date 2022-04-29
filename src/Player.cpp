@@ -26,6 +26,40 @@ void Player::draw(const Map& m) const {
 	l2.draw();
 }
 
+// tirer (générer munition)
+void Player::shoot() {
+	// création de la munition
+	std::vector<Line> shape = {
+	Line{ 50, 0, 0, 50 },
+	Line{ 0, 50, 50, 100 },
+	Line{ 50, 100, 100, 50 },
+	Line{ 100, 50, 50, 0 },
+	};
+	Munition m { -1, std::make_shared<std::vector<Line>>(shape), position, 100, 0.10 };
+	munitions.push_back(std::make_unique<Munition>(m));
+}
+
+// avance l'état des munitions en jeu du joueur
+void Player::update(Map &m) {
+
+	for (int i = 0; i < munitions.size(); i++) {
+		// faire avancer les munitions
+		munitions[i]->move();
+		munitions[i]->draw(m)
+
+		// si on arrive au centre de la map
+		if (munitions[i]->getTunnel_position() == 0) {
+			munitions.erase(munitions.begin()+i);
+		}
+	}
+}
+
+//getters
+// obtenir la scene "gameover"
+Scene Player::getGameOver() {
+	return gameover;
+}
+
 // obtenir le score
 int Player::getScore() {
 	return score;
@@ -44,3 +78,4 @@ void Player::die(Scene gameover, SDL_Renderer* renderer) {
 	gameover.transition(renderer);
 	gameover.render(renderer);
 }
+

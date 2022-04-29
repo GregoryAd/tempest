@@ -3,7 +3,7 @@
 #include "Munition.h"
 #include "Enemy.h"
 
-void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
+void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene gameover) {
 
 	int centerX = xSize / 2;
 	int centerY = ySize / 2;
@@ -65,7 +65,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 	};
 
 	Map m{ true, std::make_unique<std::vector<Line>>(v),  std::make_unique<std::vector<Line>>(v1), std::make_shared<Color>(0, 36, 128, 255) };
-	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255) };
+	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255), gameover };
 	PlayerController pc{};
 
 
@@ -109,7 +109,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 		// faire un if collision
 		// remplacer "100" par ennemi.mourir()
 		p.addScore(100);
-		s.update(renderer, std::to_string(p.getScore()), s.getStrings()[0]);
+		hud.update(renderer, std::to_string(p.getScore()), s.getStrings()[0]);
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(1000 / 30);
