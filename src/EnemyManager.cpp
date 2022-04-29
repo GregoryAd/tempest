@@ -2,12 +2,12 @@
 #include "Map.h"
 
 // Gestion des ennemis
-void EnemyManager::update(const Map& m) {
+void EnemyManager::update(const Map& m, Player& p) {
 	count++;
 	for (int i = 0; i < enemies.size(); i++) {
 		// faire avancer les ennemis
 		if (enemies[i]->getStatus() == true) {
-			enemies[i]->move();
+			enemies[i]->move(m, p);
 			enemies[i]->draw(m);
 		}
 
