@@ -26,11 +26,12 @@ public:
 	Line(int x1, int y1, int x2, int y2) : x{ new Point<int>(x1, y1)}, y{ new Point<int>(x2, y2)} {
 	}
 
-	Point<int> *center() const;
-	Point<int> *lineToVector() const;
-	Point<int> *normal() const;
+	std::unique_ptr <Point<int>> center() const;
+	std::unique_ptr <Point<int>> lineToVector() const;
+	std::unique_ptr <Point<double>> normal() const;
 	const Point<int>& getX() const;
 	const Point<int>& getY() const;
+	const int& getSize() const;
 
 
 	static void initRenderer(SDL_Renderer *renderer, std::unique_ptr<Point<int>> windowCenter);
@@ -40,6 +41,6 @@ public:
 };
 
 int dist(const Point<int>& p1, const Point<int>& p2);
-
+std::unique_ptr<Point<int>> doubleToInt(Point<double> p);
 
 #endif

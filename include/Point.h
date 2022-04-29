@@ -22,14 +22,14 @@ class Point{
         const T& getX() const;
         const T& getY() const;
         void print() const;
-        Point<T> operator+(const Point& other);
+        Point<T> operator+(const Point<T>& other);
         Point<T> operator-(const Point& other);
         Point<T> operator*(const T a);
         Point<T> operator/(const T a);
         bool operator==(const Point& other);
         bool operator>(const Point& other);
         bool operator<(const Point& other);
-        void normalize();
+        std::unique_ptr<Point<double>> normalize();
 };
 
 #include "Point.hpp"

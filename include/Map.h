@@ -31,6 +31,7 @@ class Map {
 		void draw() const;
 
 		const Line& getLine(const int i) const;
+		const Line& getInsideLine(const int i) const;
 
 		int move(const int& position, const int& input) const;
 };

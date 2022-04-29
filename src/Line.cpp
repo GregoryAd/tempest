@@ -4,30 +4,31 @@ SDL_Renderer* Line::renderer = nullptr;
 std::unique_ptr<Point<int>> Line::windowCenter;
 
 
-Point<int> *Line::center() const {
-	Point<int>* ptr = new Point<int>{ (*(this->x.get()) + *(this->y.get())) / 2};
-	return ptr;
+std::unique_ptr<Point<int>> Line::center() const {
+	Point<int> ptr{ (*(this->x.get()) + *(this->y.get())) / 2};
+	return std::make_unique<Point<int>>(ptr);
 }
-Point<int> *Line::lineToVector() const {
-	return new Point<int>{ *(this->x.get()) - *(this->y.get()) };
+std::unique_ptr<Point<int>> Line::lineToVector() const {
+	Point<int> ptr{ *(this->x) - *(this->y) };
+	return std::make_unique<Point<int>>(ptr);
 }
 
-Point<int> *Line::normal() const {
+std::unique_ptr <Point<double>> Line::normal() const {
 
 	Line l1{ getX().getY(), getX().getX(), getY().getY(), getY().getX() };
 	Point<int> normal = *l1.lineToVector();
-	normal.normalize();
-	Point<int> test = *center()+normal*10;
+	Point<double> fnorm = *normal.normalize();
+	Point<int> test = *center() + *doubleToInt(fnorm * 10);
 
 	if (dist(*Line::windowCenter, test) > dist(*Line::windowCenter, *center())) {
-		return new Point<int>{ normal };
+		return std::make_unique<Point<double>>(fnorm);
 	}
 
 	Line l2{ getY().getY(), getY().getX(), getX().getY(), getX().getX() };
 	normal = *l2.lineToVector();
-	normal.normalize();
+	fnorm = *normal.normalize();
 
-	return new Point<int>{ normal };
+	return std::make_unique<Point<double>>(fnorm);
 }
 
 const Point<int>& Line::getX() const {
@@ -35,6 +36,10 @@ const Point<int>& Line::getX() const {
 }
 const Point<int>& Line::getY() const {
 	return *this->y.get();
+}
+
+const int& Line::getSize() const {
+	return dist(*x, *y);
 }
 
 
@@ -53,5 +58,9 @@ void Line::draw() const {
 }
 
 int dist(const Point<int>& p1, const Point<int>& p2) {
-	return (int)sqrt(pow(p1.getX() - p2.getX(), 2) + pow(p1.getY() - p2.getY(), 2));
+	return static_cast<int>(sqrt(pow(p1.getX() - p2.getX(), 2) + pow(p1.getY() - p2.getY(), 2)));
+}
+
+std::unique_ptr<Point<int>> doubleToInt(Point<double> p) {
+	return std::make_unique<Point<int>>(static_cast<int>(p.getX()), static_cast<int>(p.getY()));
 }

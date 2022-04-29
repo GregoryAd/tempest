@@ -1,3 +1,5 @@
+
+#include <cmath>
 #include "Point.h"
 
 // getters
@@ -19,7 +21,7 @@ void Point<T>::print() const{
 
 // opérateurs
 template <typename T>
-Point<T> Point<T>::operator+(const Point& other){
+Point<T> Point<T>::operator+(const Point<T>& other){
     Point res;
     res.x = this->x + other.x;
     res.y = this->y + other.y;
@@ -75,8 +77,8 @@ bool Point<T>::operator<(const Point& other){
 }
 
 template <typename T>
-void Point<T>::normalize(){
-    float n = sqrt(pow(this->x, 2) + pow(this->y, 2));
-    x = x/n;
-    y = y/n;
+std::unique_ptr<Point<double>> Point<T>::normalize(){
+    double n = sqrt(pow(this->x, 2) + pow(this->y, 2));
+    return std::make_unique<Point<double>>(x / n, y / n);
 }
+

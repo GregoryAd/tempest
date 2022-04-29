@@ -13,9 +13,9 @@ void Player::draw(const Map& m) const {
 
 	SDL_SetRenderDrawColor(Line::getRenderer(), color->getR(), color->getG(), color->getB(), color->getAlpha());
 
-	Point<int> p = *l.normal();
-	p = p * 40;
-	Point<int> p2 = *l.center() + p;
+	Point<double> p = *l.normal();
+	Point<int> pI = *doubleToInt(p * 40);
+	Point<int> p2 = *l.center() + pI;
 
 	Line l1{ std::make_unique<Point<int>>(l.getX()), std::make_unique<Point<int>>(p2) };
 	Line l2{ std::make_unique<Point<int>>(l.getY()), std::make_unique<Point<int>>(p2) };

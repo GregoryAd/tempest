@@ -4,6 +4,7 @@
 
 #include "Line.h"
 #include "Button.h"
+#include "Game.h"
 
 
 Uint8 color[4] = {255,255,0,255};
@@ -52,8 +53,9 @@ int main(int argc, char** argv)
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
 	assert(renderer != NULL);
-
-
+	Game g{};
+	g.start(renderer, xSize, ySize);
+	/*
 	// Boutons
 	Button b1 = Button(100, 100, 200, 100, renderer);
 	Button b2 = Button(100, 300, 200, 100, renderer);
@@ -94,7 +96,7 @@ int main(int argc, char** argv)
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
-
+	*/
 	return 0;
 }
 

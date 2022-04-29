@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "PlayerController.h"
+#include "Munition.h"
 
 void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 
@@ -17,7 +18,6 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 	int yEnd = centerY + (lineSize * 3) / 2;
 
 	std::vector<Line> v = {
-
 		Line{ xStart, yStart, xStart + lineSize, yStart },
 		Line{ xStart + lineSize, yStart, xStart + lineSize * 2, yStart },
 		Line{ xStart + lineSize * 2, yStart, xStart + lineSize * 3, yStart },
@@ -26,13 +26,13 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 		Line{ xEnd, yStart + lineSize, xEnd, yStart + lineSize * 2 },
 		Line{ xEnd, yStart + +lineSize * 2, xEnd, yStart + lineSize * 3 },
 
-		Line{ xStart + lineSize * 2, yEnd, xStart + lineSize * 3, yEnd },
-		Line{ xStart + lineSize, yEnd, xStart + lineSize * 2, yEnd },
-		Line{ xStart, yEnd, xStart + lineSize, yEnd },
+		Line{ xStart + lineSize * 3, yEnd, xStart + lineSize * 2, yEnd },
+		Line{ xStart + lineSize * 2, yEnd, xStart + lineSize, yEnd },
+		Line{ xStart + lineSize, yEnd, xStart, yEnd },
 
-		Line{ xStart, yStart + lineSize * 2, xStart, yStart + lineSize * 3 },
-		Line{ xStart, yStart + lineSize, xStart, yStart + lineSize * 2 },
-		Line{ xStart, yStart, xStart, yStart + lineSize },
+		Line{ xStart, yStart + lineSize * 3, xStart, yStart + lineSize * 2 },
+		Line{ xStart, yStart + lineSize * 2, xStart, yStart + lineSize },
+		Line{ xStart, yStart + lineSize, xStart, yStart }
 
 	};
 
@@ -45,7 +45,6 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 	yEnd = centerY + (lineSize * 3) / 2;
 
 	std::vector<Line> v1 = {
-
 		Line{ xStart, yStart, xStart + lineSize, yStart },
 		Line{ xStart + lineSize, yStart, xStart + lineSize * 2, yStart },
 		Line{ xStart + lineSize * 2, yStart, xStart + lineSize * 3, yStart },
@@ -54,19 +53,20 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 		Line{ xEnd, yStart + lineSize, xEnd, yStart + lineSize * 2 },
 		Line{ xEnd, yStart + +lineSize * 2, xEnd, yStart + lineSize * 3 },
 
-		Line{ xStart + lineSize * 2, yEnd, xStart + lineSize * 3, yEnd },
-		Line{ xStart + lineSize, yEnd, xStart + lineSize * 2, yEnd },
-		Line{ xStart, yEnd, xStart + lineSize, yEnd },
+		Line{ xStart + lineSize * 3, yEnd, xStart + lineSize * 2, yEnd },
+		Line{ xStart + lineSize * 2, yEnd, xStart + lineSize, yEnd },
+		Line{ xStart + lineSize, yEnd, xStart, yEnd },
 
-		Line{ xStart, yStart + lineSize * 2, xStart, yStart + lineSize * 3 },
-		Line{ xStart, yStart + lineSize, xStart, yStart + lineSize * 2 },
-		Line{ xStart, yStart, xStart, yStart + lineSize },
+		Line{ xStart, yStart + lineSize * 3, xStart, yStart + lineSize * 2 },
+		Line{ xStart, yStart + lineSize * 2, xStart, yStart + lineSize },
+		Line{ xStart, yStart + lineSize, xStart, yStart }
 
 	};
 
 	Map m{ true, std::make_unique<std::vector<Line>>(v),  std::make_unique<std::vector<Line>>(v1), std::make_shared<Color>(0, 36, 128, 255) };
 	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255) };
 	PlayerController pc{};
+	Munition mun{7};
 
 	bool quit = false;
 	while (!quit)
@@ -78,6 +78,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize) {
 
 		m.draw();
 		p.draw(m);
+		mun.draw(m);
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(1000 / 30);
