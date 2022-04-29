@@ -74,7 +74,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 		Line{ 50, 100, 100, 50 },
 		Line{ 100, 50, 50, 0 },
 	};
-	Munition mun{1, std::make_shared<std::vector<Line>>(shape), 7, 100};
+	Munition mun{ 1, std::make_shared<std::vector<Line>>(shape), 7, 100, 0.1};
 
 
 	bool quit = false;

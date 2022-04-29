@@ -20,7 +20,7 @@ void Entity::draw(Map& m) const {
 
 	Line directionLine{ std::make_unique<Point<int>>(in), std::make_unique<Point<int>>(out) };
 
-	int size = lineOut.getSize() / 10;
+	int size = lineOut.getSize() * size_pourcentage;
 	int mid = size / 2;
 
 	Point<int> direction = *directionLine.lineToVector();
