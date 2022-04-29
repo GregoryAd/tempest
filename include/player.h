@@ -30,7 +30,6 @@ public:
 	void shoot();
 	bool update(const Map& m);
 	int getScore();
-	Scene getGameOver();
 	void addScore(int add);
 	void die();
 
