@@ -109,8 +109,6 @@ int main(int argc, char** argv)
 	// Scene
 	Scene hud(3, buttons, f, text3);
 
-
-
 	// Scene
 	Scene gameover(2, buttons, f, text2);
 
@@ -142,7 +140,7 @@ int main(int argc, char** argv)
 				}
 				if (b2.CurrentSprite == 2) {
 					start.transition(renderer);
-					gameover.render(renderer);
+					SDL_Quit();
 				}
 
 			}

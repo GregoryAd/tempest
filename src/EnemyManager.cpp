@@ -42,14 +42,16 @@ void EnemyManager::init(const Map& m){
 	// position sur la map aléatoire
 	std::random_device rd2;
 	std::mt19937 gen2(rd2());
-	std::uniform_int_distribution<> dis2(1, m.getSize());
+	std::uniform_int_distribution<> dis2(0, m.getSize()-1);
 
 	// génération d'un ennemi
-	if ((dis(gen) > probability) && (count == rate)) {
+	if (count == rate) {
 		count = 0;
-		Enemy e{ -5, std::make_shared<std::vector<Line>>(shape2), dis2(gen2), 100, 0.90, 100 };
-		e.setStatus(true);
-		enemies.push_back(std::make_unique<Enemy>(e));
+		if ((dis(gen) < probability)) {
+			Enemy e{ -5, std::make_shared<std::vector<Line>>(shape2), dis2(gen2), 100, 0.90, 100 };
+			e.setStatus(true);
+			enemies.push_back(std::make_unique<Enemy>(e));
+		}
 	}
 	
 }

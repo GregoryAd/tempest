@@ -66,7 +66,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 	};
 
 	Map m{ true, std::make_unique<std::vector<Line>>(v),  std::make_unique<std::vector<Line>>(v1), std::make_shared<Color>(0, 36, 128, 255) };
-	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255), gameover };
+	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255) };
 	PlayerController pc{};
 
 
@@ -88,23 +88,30 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 	Line{ 10, 5, 0, 0 },
 	};
 
-	EnemyManager em(100, 0.5f);
+	EnemyManager em(35, 0.5f);
 	//Munition mun{ 1, std::make_shared<std::vector<Line>>(shape), 7, 100, 0.10 };
 	//Enemy e{-5, std::make_shared<std::vector<Line>>(shape2), 0, 100, 0.90, 100};
 	//e.setStatus(true);
 	bool quit = false;
-	while (!quit)
+	bool status = true;
+	while (status)
 	{
 		quit = pc.checkInput(&p, m);
+
 
 
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
 
 		m.draw();
-		p.update(m);
 
 		em.update(m, p);
+
+		hud.update(renderer, std::to_string(p.getScore()), hud.getStrings()[0]);
+		status = p.update(m);
+
+		SDL_RenderPresent(renderer);
+		SDL_Delay(1000 / 30);
 
 		//mun.draw(m);
 		//e.draw(m);
@@ -114,11 +121,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 		// faire un if collision
 		// remplacer "100" par ennemi.mourir()
 		//p.addScore(100);
-		hud.update(renderer, std::to_string(p.getScore()), hud.getStrings()[0]);
-
-		SDL_RenderPresent(renderer);
-		SDL_Delay(1000 / 30);
 	}
-	SDL_Quit();
-
+	gameover.transition(renderer);
+	gameover.render(renderer);
 }

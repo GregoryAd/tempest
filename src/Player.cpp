@@ -40,7 +40,7 @@ void Player::shoot() {
 }
 
 // avance l'état des munitions en jeu du joueur
-void Player::update(const Map &m) {
+bool Player::update(const Map &m) {
 
 
 	this->draw(m);
@@ -54,12 +54,8 @@ void Player::update(const Map &m) {
 			munitions.erase(munitions.begin()+i);
 		}
 	}
-}
 
-//getters
-// obtenir la scene "gameover"
-Scene Player::getGameOver() {
-	return gameover;
+	return status;
 }
 
 // obtenir le score
@@ -73,11 +69,9 @@ void Player::addScore(int add) {
 }
 
 // si le joueur est touché
-void Player::die(Scene gameover, SDL_Renderer* renderer) {
+void Player::die() {
 	// reset du score
 	score = 0;
-	// écran de game over
-	gameover.transition(renderer);
-	gameover.render(renderer);
+	status = false;
 }
 

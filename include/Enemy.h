@@ -19,8 +19,8 @@ public:
 	int getReward();
 	bool getStatus();
 	void setStatus(bool s);
-	void move(const Map& m, const Player& p);
-	void trackPlayer(const Map& m, const Player& p);
+	void move(const Map& m, Player& p);
+	void trackPlayer(const Map& m, Player& p);
 };
 
 
