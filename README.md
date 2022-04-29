@@ -2,10 +2,10 @@
 
 Téléchargement et initialisation du projet
 ```
-git clone --recurse-submodule git@git.unistra.fr:thery/sdl2_base_vectors.git
+git clone --recurse-submodule git@github.com:GregoryAd/tempest.git
 mkdir BuildSDLEx
 cd BuildSDLEx
-cmake ../sdl2_base_vectors
+cmake ../tempest
 make -j 8
 ```
 
