@@ -17,7 +17,7 @@ private:
 	int tunnel_position;
 
 public:
-	Entity(int speed, std::shared_ptr<std::vector<Line>> shape, int position, int tunnel_position):
+	Entity(int speed, std::shared_ptr<std::vector<Line>> shape, int position, int tunnel_position) :
 		speed{ speed }, shape{ shape }, position{ position }, tunnel_position{ tunnel_position }
 	{
 
@@ -26,6 +26,8 @@ public:
 	const int& getSpeed() const;
 	const int& getPosition() const;
 	const int& getTunnel_position() const;
+
+	void draw(Map& m) const;
 
 };
 
