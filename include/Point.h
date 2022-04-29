@@ -23,7 +23,7 @@ class Point{
         const T& getY() const;
         void print() const;
         Point<T> operator+(const Point<T>& other);
-        Point<T> operator-(const Point& other);
+        Point<T> operator-(const Point<T>& other);
         Point<T> operator*(const T a);
         Point<T> operator/(const T a);
         bool operator==(const Point& other);

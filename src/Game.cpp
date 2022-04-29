@@ -77,18 +77,18 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 	};
 
 	std::vector<Line> shape2 = {
-	Line{ 0, 0, 50, 10 },
-	Line{ 50, 10, 100, 0 },
-	Line{ 100, 0, 80, 20 },
-	Line{ 80, 20, 100, 20 },
-	Line{ 100, 20, 50, 10 },
-	Line{ 50, 10, 0, 20 },
-	Line{ 0, 20, 20, 10 },
-	Line{ 20, 10, 0, 0 },
+	Line{ 0, 0, 50, 5 },
+	Line{ 50, 5, 100, 0 },
+	Line{ 100, 0, 87, 5 },
+	Line{ 87, 5, 95, 10 },
+	Line{ 95, 10, 50, 5 },
+	Line{ 50, 5, 3, 10 },
+	Line{ 3, 10, 10, 5 },
+	Line{ 10, 5, 0, 0 },
 	};
 
 	Munition mun{ 1, std::make_shared<std::vector<Line>>(shape), 7, 100, 0.10 };
-	Enemy e{ 1, std::make_shared<std::vector<Line>>(shape2), 0, 100,1.0, 100};
+	Enemy e{-1, std::make_shared<std::vector<Line>>(shape2), 0, 100, 0.90, 100};
 
 	bool quit = false;
 	while (!quit)
@@ -103,6 +103,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 		p.draw(m);
 		//mun.draw(m);
 		e.draw(m);
+		e.move();
 
 
 		// faire un if collision

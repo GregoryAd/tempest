@@ -19,3 +19,10 @@ bool Enemy::getStatus() {
 void Enemy::setStatus(bool s) {
 	status = s;
 }
+
+// tuer le joueur
+void Enemy::killPlayer(Player p, SDL_Renderer* renderer, Scene gameover) {
+	if ((this->getTunnel_position() == 100) &&
+		(this->getPosition() == p.getPosition()))
+		p.die(gameover, renderer);
+}

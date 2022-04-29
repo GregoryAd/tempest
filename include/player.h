@@ -7,6 +7,7 @@
 #include "Map.h"
 #include "Color.h"
 #include "Munition.h"
+#include "Scene.h"
 
 class Player
 {
@@ -28,6 +29,7 @@ public:
 	void shoot();
 	int getScore();
 	void addScore(int add);
+	void die(Scene gameover, SDL_Renderer* renderer);
 
 };
 

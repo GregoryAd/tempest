@@ -10,6 +10,8 @@ std::unique_ptr<Point<int>> Line::center() const {
 }
 std::unique_ptr<Point<int>> Line::lineToVector() const {
 	Point<int> ptr{ *(this->x) - *(this->y) };
+
+
 	return std::make_unique<Point<int>>(ptr);
 }
 
