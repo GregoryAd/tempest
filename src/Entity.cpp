@@ -12,7 +12,10 @@ const float& Entity::getTunnel_position() const {
 
 void Entity::move() {
 	double distFactor = ((100.0 - tunnel_position) / 100.0);
-	tunnel_position+=std::max(speed * distFactor, 0.5);
+	double choiceSpeed = std::max(std::abs(speed * distFactor), 0.5);
+	if (speed < 0)
+		choiceSpeed = -choiceSpeed;
+	tunnel_position+= choiceSpeed;
 }
 
 void Entity::draw(const Map& m) const {
