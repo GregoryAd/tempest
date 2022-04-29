@@ -1,9 +1,11 @@
 #include "EnemyManager.h"
 #include "Map.h"
+#include <random>
 
 // Gestion des ennemis
 void EnemyManager::update(const Map& m, Player& p) {
 	count++;
+	init(m);
 	for (int i = 0; i < enemies.size(); i++) {
 		// faire avancer les ennemis
 		if (enemies[i]->getStatus() == true) {
@@ -43,7 +45,7 @@ void EnemyManager::init(const Map& m){
 	std::uniform_int_distribution<> dis2(1, m.getSize());
 
 	// génération d'un ennemi
-	if (dis(gen) > probability) && (count == rate)) {
+	if ((dis(gen) > probability) && (count == rate)) {
 		count = 0;
 		Enemy e{ -5, std::make_shared<std::vector<Line>>(shape2), dis2(gen2), 100, 0.90, 100 };
 		e.setStatus(true);
