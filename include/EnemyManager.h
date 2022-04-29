@@ -12,7 +12,7 @@ private :
 public :
 	EnemyManager(int rate, double probability) (enemies{}, count{ 0 }, rate{ rate }, probability{ probability })
 	 {};
-	void init();
+	void init(const Map& m);
 	void update(const Map& m);
 };
 
