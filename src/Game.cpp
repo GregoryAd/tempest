@@ -88,7 +88,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 	};
 
 	Munition mun{ 1, std::make_shared<std::vector<Line>>(shape), 7, 100, 0.10 };
-	Enemy e{ 1, std::make_shared<std::vector<Line>>(shape2), 4, 100,1.0, 100};
+	Enemy e{ 1, std::make_shared<std::vector<Line>>(shape2), 0, 100,1.0, 100};
 
 	bool quit = false;
 	while (!quit)
@@ -101,7 +101,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 
 		m.draw();
 		p.draw(m);
-		mun.draw(m);
+		//mun.draw(m);
 		e.draw(m);
 
 
