@@ -39,19 +39,20 @@ void Enemy::move(const Map& m, const Player& p) {
 }
 
 void Enemy::trackPlayer(const Map& m, const Player& p) {
-	int d1 = std::abs(this->getPosition() - p.getPosition());
-	int d2 = std::abs(this->getPosition() + (std::abs(m.getSize() - 1 - p.getPosition())));
+	int d1 = std::abs(m.move(this->getPosition(), -1) - p.getPosition());
+	int d2 = std::abs(m.move(this->getPosition(), 1) - p.getPosition());
 
-	if (d1 == 0 || d2 == 0)
+	if (d1 - 1 == 0 || d2 + 1 == 0)
 		return;
 
-	if (d1 >= d2) {
-		int pos = m.move(this->getPosition(), 1);
+
+	if (d1 <= d2) {
+		int pos = m.move(this->getPosition(), -1);
 		pos = (pos < 0) ? m.move(this->getPosition(), 1) : pos;
 		this->setPosition(pos);
 		return;
 	}
-	if (d2 > d1) {
+	else{
 		int pos = m.move(this->getPosition(), 1);
 		pos = (pos < 0) ? m.move(this->getPosition(), -1) : pos;
 		this->setPosition(pos);
