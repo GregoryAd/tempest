@@ -12,11 +12,12 @@ class Player
 {
 private:
 	int position;
+	int score;
 	std::shared_ptr<Color> color;
 	std::vector<std::unique_ptr<Munition>> munitions{};
 
 public:
-	Player(int position, std::shared_ptr<Color> color) : position{position}, color{color}
+	Player(int position, std::shared_ptr<Color> color) : position{position}, color{color}, score{0}
 	{
 
 	};
@@ -25,6 +26,8 @@ public:
 	void move(int position);
 	void draw(const Map& m) const;
 	void shoot();
+	int getScore();
+	void addScore(int add);
 
 };
 
