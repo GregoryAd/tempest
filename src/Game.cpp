@@ -89,7 +89,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 
 	//Munition mun{ 1, std::make_shared<std::vector<Line>>(shape), 7, 100, 0.10 };
 	Enemy e{-5, std::make_shared<std::vector<Line>>(shape2), 0, 100, 0.90, 100};
-
+	e.setStatus(true);
 	bool quit = false;
 	while (!quit)
 	{
