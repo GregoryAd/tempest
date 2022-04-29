@@ -13,6 +13,7 @@ void EnemyManager::update(const Map& m, Player& p) {
 
 		// si l'ennemi est mort, le retirer de la liste
 		if (enemies[i]->getStatus() == false) {
+			p.addScore(enemies[i]->getReward());
 			enemies.erase(enemies.begin() + i);
 		}
 	}
