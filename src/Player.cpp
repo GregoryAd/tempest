@@ -26,6 +26,12 @@ void Player::draw(const Map& m) const {
 	l2.draw();
 }
 
+//getters
+// obtenir la scene "gameover"
+Scene Player::getGameOver() {
+	return gameover;
+}
+
 // obtenir le score
 int Player::getScore() {
 	return score;
@@ -44,3 +50,4 @@ void Player::die(Scene gameover, SDL_Renderer* renderer) {
 	gameover.transition(renderer);
 	gameover.render(renderer);
 }
+

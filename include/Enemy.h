@@ -14,7 +14,7 @@ public:
 	{}
 
 	const int& die();
-	void killPlayer(Player p, SDL_Renderer* renderer, Scene gameover);
+	void killPlayer(Player p, SDL_Renderer* renderer);
 	int getReward();
 	bool getStatus();
 	void setStatus(bool s);

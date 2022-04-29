@@ -15,7 +15,7 @@ public:
 	{
 
 	};
-	void start(SDL_Renderer* renderer, int xSize, int ySize, Scene s);
+	void start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene gameover);
 
 };
 #endif

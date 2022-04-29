@@ -21,8 +21,8 @@ void Enemy::setStatus(bool s) {
 }
 
 // tuer le joueur
-void Enemy::killPlayer(Player p, SDL_Renderer* renderer, Scene gameover) {
+void Enemy::killPlayer(Player p, SDL_Renderer* renderer) {
 	if ((this->getTunnel_position() == 100) &&
 		(this->getPosition() == p.getPosition()))
-		p.die(gameover, renderer);
+		p.die(p.getGameOver(), renderer);
 }
