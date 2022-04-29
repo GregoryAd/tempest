@@ -28,6 +28,7 @@ public:
 	void move(int position);
 	void draw(const Map& m) const;
 	void shoot();
+	void update(const Map& m);
 	int getScore();
 	Scene getGameOver();
 	void addScore(int add);

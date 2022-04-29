@@ -28,6 +28,9 @@ bool PlayerController::checkInput(Player *p, Map& m) const{
 				if (position != -1)
 					p->move(position);
 			}
+			else if (state[SDL_SCANCODE_SPACE]) {
+				p->shoot();
+			}
 
 			return false;
 			
