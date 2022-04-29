@@ -4,7 +4,7 @@
 #include "Line.h"
 #include "Map.h"
 
-void Munition::draw(Map& m) const {
+/*void Munition::draw(Map& m) const {
 
 	Line lineOut = m.getLine(position);
 	Line lineIn = m.getInsideLine(position);
@@ -53,4 +53,4 @@ void Munition::draw(Map& m) const {
 	l2.draw();
 	l3.draw();
 	l4.draw();
-}
+}*/

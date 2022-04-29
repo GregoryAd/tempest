@@ -67,7 +67,15 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene s) {
 	Map m{ true, std::make_unique<std::vector<Line>>(v),  std::make_unique<std::vector<Line>>(v1), std::make_shared<Color>(0, 36, 128, 255) };
 	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255) };
 	PlayerController pc{};
-	Munition mun{7};
+
+
+	std::vector<Line> shape = {
+		Line{ 50, 0, 0, 50 },
+		Line{ 0, 50, 50, 100 },
+		Line{ 50, 100, 100, 50 },
+		Line{ 100, 50, 50, 0 },
+	};
+	Munition mun{1, std::make_shared<std::vector<Line>>(shape), 7, 100};
 
 
 	bool quit = false;

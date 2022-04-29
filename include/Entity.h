@@ -5,7 +5,7 @@
 #include <SDL.h>
 #include <vector>
 
-#include "Line"
+#include "Line.h"
 #include "Map.h"
 
 class Entity
