@@ -66,7 +66,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 	};
 
 	Map m{ true, std::make_unique<std::vector<Line>>(v),  std::make_unique<std::vector<Line>>(v1), std::make_shared<Color>(0, 36, 128, 255) };
-	Player p{ 7,  std::make_shared<Color>(255, 255, 0, 255) };
+	Player p{ 7, 1,  std::make_shared<Color>(255, 255, 0, 255) };
 	PlayerController pc{};
 
 
@@ -96,7 +96,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 	bool status = true;
 	while (!quit && status)
 	{
-		quit = pc.checkInput(&p, m);
+		quit = pc.checkInput(p, m, em);
 
 
 

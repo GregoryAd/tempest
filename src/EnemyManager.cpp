@@ -58,8 +58,11 @@ void EnemyManager::init(const Map& m){
 	
 }
 
-
-
+void EnemyManager::killAll() {
+	for (int i = 0; i < enemies.size(); i++) {
+		enemies[i]->setStatus(false);
+	}
+}
 
 void EnemyManager::killEnemy(std::vector<std::shared_ptr<Munition>> munitions) {
 

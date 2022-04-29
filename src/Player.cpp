@@ -63,13 +63,21 @@ bool Player::update(const Map &m) {
 }
 
 // obtenir le score
-int Player::getScore() {
+const int& Player::getScore() const{
 	return score;
 }
 
 // augmenter le score (si un ennemi meurt)
 void Player::addScore(int add) {
 	score = score + add;
+}
+
+const int& Player::getBomb() const {
+	return bomb;
+}
+
+void Player::setBomb(const int& bomb) {
+	this->bomb = bomb;
 }
 
 // si le joueur est touché

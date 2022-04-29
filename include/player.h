@@ -14,12 +14,13 @@ class Player
 private:
 	int position;
 	int score;
+	int bomb;
 	bool status;
 	std::shared_ptr<Color> color;
 	std::vector<std::shared_ptr<Munition>> munitions{};
 
 public:
-	Player(int position, std::shared_ptr<Color> color) : position{ position }, color{ color }, score{ 0 }, status{true}
+	Player(int position, int bomb, std::shared_ptr<Color> color) : position{ position }, bomb{bomb}, color{color}, score{0}, status{true}
 	{
 
 	};
@@ -30,8 +31,10 @@ public:
 	void draw(const Map& m) const;
 	void shoot();
 	bool update(const Map& m);
-	int getScore();
+	const int& getScore() const;
 	void addScore(int add);
+	const int& getBomb() const;
+	void setBomb(const int& bomb);
 	void die();
 
 };
