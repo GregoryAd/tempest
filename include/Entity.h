@@ -24,7 +24,7 @@ public:
 
 	}
 
-	void move();
+	virtual void move();
 	const float& getSpeed() const;
 	const int& getPosition() const;
 	const float& getTunnel_position() const;

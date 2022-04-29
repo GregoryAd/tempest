@@ -26,3 +26,12 @@ void Enemy::killPlayer(Player p, SDL_Renderer* renderer) {
 		(this->getPosition() == p.getPosition()))
 		p.die(p.getGameOver(), renderer);
 }
+
+void Enemy::move() {
+	if (!border)
+		Entity::move();
+	else
+
+	if (getTunnel_position() > 100)
+		border = true;
+}
