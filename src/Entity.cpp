@@ -1,13 +1,17 @@
 #include "Entity.h"
 
-const int& Entity::getSpeed() const {
+const float& Entity::getSpeed() const {
 	return speed;
 }
 const int& Entity::getPosition() const {
 	return position;
 }
-const int& Entity::getTunnel_position() const {
+const float& Entity::getTunnel_position() const {
 	return tunnel_position;
+}
+
+void Entity::move() {
+	tunnel_position+=speed;
 }
 
 void Entity::draw(Map& m) const {

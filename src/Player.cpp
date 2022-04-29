@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 // obtenir la position actuelle du joueur
 const int& Player::getPosition() const {
 	return position;
@@ -35,4 +34,13 @@ int Player::getScore() {
 // augmenter le score (si un ennemi meurt)
 void Player::addScore(int add) {
 	score = score + add;
+}
+
+// si le joueur est touché
+void Player::die(Scene gameover, SDL_Renderer* renderer) {
+	// reset du score
+	score = 0;
+	// écran de game over
+	gameover.transition(renderer);
+	gameover.render(renderer);
 }
