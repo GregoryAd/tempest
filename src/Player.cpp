@@ -35,20 +35,22 @@ void Player::shoot() {
 	Line{ 50, 100, 100, 50 },
 	Line{ 100, 50, 50, 0 },
 	};
-	Munition m { -1, std::make_shared<std::vector<Line>>(shape), position, 100, 0.10 };
+	Munition m { 1, std::make_shared<std::vector<Line>>(shape), position, 0, 0.10 };
 	munitions.push_back(std::make_unique<Munition>(m));
 }
 
 // avance l'état des munitions en jeu du joueur
-void Player::update(Map &m) {
+void Player::update(const Map &m) {
 
+
+	this->draw(m);
 	for (int i = 0; i < munitions.size(); i++) {
 		// faire avancer les munitions
 		munitions[i]->move();
-		munitions[i]->draw(m)
+		munitions[i]->draw(m);
 
 		// si on arrive au centre de la map
-		if (munitions[i]->getTunnel_position() == 0) {
+		if (munitions[i]->getTunnel_position() == 100) {
 			munitions.erase(munitions.begin()+i);
 		}
 	}

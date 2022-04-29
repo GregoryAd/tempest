@@ -29,7 +29,7 @@ public:
 	const int& getPosition() const;
 	const float& getTunnel_position() const;
 
-	void draw(Map& m) const;
+	void draw(const Map& m) const;
 
 };
 

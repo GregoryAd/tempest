@@ -100,16 +100,16 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 		SDL_RenderClear(renderer);
 
 		m.draw();
-		p.draw(m);
+		p.update(m);
 		//mun.draw(m);
-		e.draw(m);
-		e.move();
+		//e.draw(m);
+		//e.move();
 
 
 		// faire un if collision
 		// remplacer "100" par ennemi.mourir()
-		p.addScore(100);
-		hud.update(renderer, std::to_string(p.getScore()), s.getStrings()[0]);
+		//p.addScore(100);
+		hud.update(renderer, std::to_string(p.getScore()), hud.getStrings()[0]);
 
 		SDL_RenderPresent(renderer);
 		SDL_Delay(1000 / 30);

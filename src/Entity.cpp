@@ -14,7 +14,7 @@ void Entity::move() {
 	tunnel_position+=speed;
 }
 
-void Entity::draw(Map& m) const {
+void Entity::draw(const Map& m) const {
 	Line lineOut = m.getLine(position);
 	Line lineIn = m.getInsideLine(position);
 

@@ -138,7 +138,7 @@ int main(int argc, char** argv)
 				if (b1.CurrentSprite == 2) {
 					start.transition(renderer);
 					Game g{};
-					g.start(renderer, xSize, ySize, hud);
+					g.start(renderer, xSize, ySize, hud, gameover);
 				}
 				if (b2.CurrentSprite == 2) {
 					start.transition(renderer);
