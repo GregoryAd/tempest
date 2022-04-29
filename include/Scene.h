@@ -15,11 +15,11 @@ private:
 	Font font;
 	std::vector<Text> strings;
 public:
-	Scene(int a, std::vector<Button> b, Font f, std::vector<Text> s);
-	std::vector<Text> getStrings();
+	Scene(const int& a, const std::vector<Button>& b, const Font& f, const std::vector<Text>& s);
+	std::vector<Text> getStrings() const;
 	void render(SDL_Renderer* renderer);
-	void transition(SDL_Renderer* renderer);
-	void update(SDL_Renderer* renderer, std::string str, int pos);
+	void transition(SDL_Renderer* renderer) const;
+	void update(SDL_Renderer* renderer, const std::string& str, const int& pos);
 };
 
 

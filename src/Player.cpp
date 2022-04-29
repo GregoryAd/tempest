@@ -41,7 +41,7 @@ void Player::shoot() {
 }
 
 // avance l'état des munitions en jeu du joueur
-bool Player::update(const Map &m) {
+const bool& Player::update(const Map &m) {
 
 
 	this->draw(m);
@@ -68,7 +68,7 @@ const int& Player::getScore() const{
 }
 
 // augmenter le score (si un ennemi meurt)
-void Player::addScore(int add) {
+void Player::addScore(const int& add) {
 	score = score + add;
 }
 

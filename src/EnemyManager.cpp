@@ -58,12 +58,14 @@ void EnemyManager::init(const Map& m){
 	
 }
 
+// Tuer tous les ennemis présent (bombe)
 void EnemyManager::killAll() {
 	for (int i = 0; i < enemies.size(); i++) {
 		enemies[i]->setStatus(false);
 	}
 }
 
+// recherche si une munition touche un ennemi ou non et le désactive pour suppression
 void EnemyManager::killEnemy(std::vector<std::shared_ptr<Munition>> munitions) {
 
 	for (int j = 0; j < munitions.size(); j++) {

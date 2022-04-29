@@ -19,7 +19,8 @@ private:
 	double size_pourcentage;
 
 public:
-	Entity(bool status, float speed, std::shared_ptr<std::vector<Line>> shape, int position, float tunnel_position, double size_pourcentage) :
+	Entity(const bool& status, const float& speed, std::shared_ptr<std::vector<Line>> shape, const int& position
+		, const float& tunnel_position, const double& size_pourcentage) :
 		status{ status }, speed{ speed }, shape{ shape }, position{ position }, tunnel_position{ tunnel_position }, size_pourcentage{size_pourcentage}
 	{
 
@@ -27,8 +28,8 @@ public:
 
 	virtual void move();
 
-	bool getStatus();
-	void setStatus(bool s);
+	bool getStatus() const;
+	void setStatus(const bool& s);
 	const float& getSpeed() const;
 	const int& getPosition() const;
 	void setPosition(const int& pos);

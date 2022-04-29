@@ -8,7 +8,7 @@
 class Font {
 public:
     static int simplex[95][112];
-    void draw(SDL_Renderer* renderer, std::string str, int x, int y, int s);
+    void draw(SDL_Renderer* renderer, const std::string& str, const int& x, const int& y, const int& s) const;
 };
 
 

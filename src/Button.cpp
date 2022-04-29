@@ -2,7 +2,7 @@
 SDL_Renderer* Button::renderer;
 
 // constructeur
-Button::Button(int x, int y, int w, int h, SDL_Renderer* renderer){
+Button::Button(const int& x, const int& y, const int& w, const int& h, SDL_Renderer* renderer){
     box.x = x;
     box.y = y;
     box.w = w;
@@ -12,7 +12,7 @@ Button::Button(int x, int y, int w, int h, SDL_Renderer* renderer){
     texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, w, h);
 }
 
-void Button::setPosition(int x, int y){
+void Button::setPosition(const int& x, const int& y){
     box.x = x;
     box.y = y;
 }
@@ -69,7 +69,7 @@ void Button::handleEvent(SDL_Event* e){
 
 
 // affichage du bouton
-void Button::render(){
+void Button::render() const{
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
     SDL_RenderFillRect(renderer, &box);
 }

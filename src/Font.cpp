@@ -1,7 +1,7 @@
 #include "Font.h"
 
 
-void Font::draw(SDL_Renderer* renderer, std::string str, int x, int y, int s) {
+void Font::draw(SDL_Renderer* renderer, std::string str, int x, int y, int s) const{
 
     for (char& c : str) {
         int id = int(c) - 32; // valeur ascii

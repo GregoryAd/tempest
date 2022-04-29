@@ -10,7 +10,7 @@ private :
 	int rate; // fréquence de spawn
 	double probability; // probabilité de spawn
 public :
-	EnemyManager(int rate, double probability):enemies{}, count{ 0 }, rate{ rate }, probability{ probability }
+	EnemyManager(const int& rate, const double& probability):enemies{}, count{ 0 }, rate{ rate }, probability{ probability }
 	 {};
 	void init(const Map& m);
 	void update(const Map& m, Player& p);

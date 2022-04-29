@@ -10,7 +10,7 @@ class Point{
         T x, y;
 
     public :
-        Point(T a, T b) :x{a}, y{b} {
+        Point(const T& a, const T& b) :x{a}, y{b} {
 
         };
         Point() :x{0}, y{0}{

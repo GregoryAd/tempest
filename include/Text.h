@@ -16,7 +16,7 @@ public:
 	Color color;
 
 	// contructeur
-	inline Text(SDL_Renderer* r, std::string s, int a, int b, int si, Color c) :
+	inline Text(SDL_Renderer* r, std::string s,const int& a,const int& b,const int& si, Color c) :
 		renderer{r},
 		str{s},
 		x{a},
@@ -25,22 +25,22 @@ public:
 		color{c}{}
 
 	// getters
-	inline SDL_Renderer* getRenderer() {
+	inline SDL_Renderer* getRenderer() const{
 		return this->renderer;
 	}
-	inline std::string getString() {
+	inline std::string getString() const{
 		return this->str;
 	}
-	inline int getx() {
+	inline int getx() const{
 		return this->x;
 	}
-	inline int gety() {
+	inline int gety() const{
 		return this->y;
 	}
-	inline int getSize() {
+	inline int getSize() const{
 		return this->size;
 	}
-	inline Color getColor() {
+	inline Color getColor() const{
 		return this->color;
 	}
 };

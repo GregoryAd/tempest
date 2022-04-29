@@ -4,13 +4,15 @@
 #include "Enemy.h"
 #include "EnemyManager.h"
 
-void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene gameover) {
+void Game::start(SDL_Renderer* renderer,const int& xSize,const int& ySize, Scene& hud, Scene& gameover) const{
 
 	int centerX = xSize / 2;
 	int centerY = ySize / 2;
 
+	//initialisation pour l'affichage des lignes
 	Line::initRenderer(renderer, std::make_unique<Point<int>>(centerX, centerY));
 
+	//forme exterieur de la carte
 	int lineSize = 200;
 
 	int xStart = centerX - (lineSize * 3) / 2;
@@ -38,6 +40,7 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 
 	};
 
+	//forme intérieur de la carte
 	lineSize = 25;
 
 	xStart = centerX - (lineSize * 3) / 2;
@@ -74,16 +77,15 @@ void Game::start(SDL_Renderer* renderer, int xSize, int ySize, Scene hud, Scene 
 
 	bool quit = false;
 	bool status = true;
+
+	//boucle du jeu tant que le joueur n'est pas mort ou qu'il ne quitte pas
 	while (!quit && status)
 	{
 		quit = pc.checkInput(p, m, em);
 
-
-
 		gameover.transition(renderer);
 
 		m.draw();
-
 		em.update(m, p);
 
 		hud.update(renderer, std::to_string(p.getScore()), 0);

@@ -11,7 +11,7 @@ private:
 public:
 	PlayerController() {};
 
-	bool checkInput(Player& p, Map& m, EnemyManager& em) const;
+	bool checkInput(Player& p, const Map& m, EnemyManager& em) const;
 
 
 };

@@ -20,7 +20,7 @@ private:
 	std::vector<std::shared_ptr<Munition>> munitions{};
 
 public:
-	Player(int position, int bomb, std::shared_ptr<Color> color) : position{ position }, bomb{bomb}, color{color}, score{0}, status{true}
+	Player(const int& position, const int& bomb, std::shared_ptr<Color> color) : position{ position }, bomb{bomb}, color{color}, score{0}, status{true}
 	{
 
 	};
@@ -30,9 +30,9 @@ public:
 	void move(int position);
 	void draw(const Map& m) const;
 	void shoot();
-	bool update(const Map& m);
+	const bool& update(const Map& m);
 	const int& getScore() const;
-	void addScore(int add);
+	void addScore(const int& add);
 	const int& getBomb() const;
 	void setBomb(const int& bomb);
 	void die();

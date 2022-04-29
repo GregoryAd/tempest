@@ -4,7 +4,6 @@
 #include <iostream>
 #include <memory>
 #include "Point.h"
-#include "Drawable.h"
 #include "SDL.h"
 
 class Line {
@@ -23,7 +22,7 @@ public:
 	Line(const Line& l) : x{ new Point<int>{*l.x} }, y{ new Point<int>{*l.y } }  {
 	}
 
-	Line(int x1, int y1, int x2, int y2) : x{ new Point<int>(x1, y1)}, y{ new Point<int>(x2, y2)} {
+	Line(const int& x1,const int& y1,const int& x2,const int& y2) : x{ new Point<int>(x1, y1)}, y{ new Point<int>(x2, y2)} {
 	}
 
 	std::unique_ptr <Point<int>> center() const;
@@ -41,6 +40,6 @@ public:
 };
 
 int dist(const Point<int>& p1, const Point<int>& p2);
-std::unique_ptr<Point<int>> doubleToInt(Point<double> p);
+std::unique_ptr<Point<int>> doubleToInt(const Point<double>& p);
 
 #endif

@@ -17,10 +17,10 @@ private:
     SDL_Texture* texture;
     static SDL_Renderer* renderer;
 public:
-    Button(int x, int y, int w, int h, SDL_Renderer* renderer);
-    void setPosition(int x, int y);
+    Button(const int& x, const int& y, const int& w, const int& h, SDL_Renderer* renderer);
+    void setPosition(const int& x, const int& y);
     void handleEvent(SDL_Event* e);
-    void render();
+    void render() const;
     ButtonSprite CurrentSprite;
     ~Button();
 };

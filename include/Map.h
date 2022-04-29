@@ -17,7 +17,7 @@ class Map {
 
 
 	public:
-		Map(bool loop, std::unique_ptr<std::vector<Line>> shape, std::unique_ptr<std::vector<Line>> shapeInside, std::shared_ptr<Color> color)
+		Map(const bool& loop, std::unique_ptr<std::vector<Line>> shape, std::unique_ptr<std::vector<Line>> shapeInside, std::shared_ptr<Color> color)
 			: loop{ loop }, shape{ std::move(shape) }, shapeInside{ std::move(shapeInside) }, color{color}{
 			
 		};
